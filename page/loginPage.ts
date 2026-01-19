@@ -12,7 +12,7 @@ export class LoginPage{
         this.login=page.getByRole('textbox',{name:'Login'});
         this.password=page.locator('input[name="password"]')
         this.loginbutton=page.getByRole('button',{name:'Login'});
-        this.confirmLogin=page.locator('a[href="/profile"]')
+        this.confirmLogin=page.getByRole('link', { name: 'Profile' });
     }
 
     async goto(){
@@ -31,12 +31,7 @@ export class LoginPage{
     }
 
     async confirmlogins(){
-        if (await this.confirmLogin.isVisible()){
             await expect(this.confirmLogin).toBeVisible({ timeout: 10000 });
             console.log('User Login successfully');
-        }else{
-            await this.page.screenshot({path:`./screenshots/userLoginFailed${Date.now()}.png`});
-            console.log('User login failed');
-        }
     }
 }

@@ -1,0 +1,15 @@
+[
+    {
+        "firstName":"Nethma",
+        "lastName":"Malshani",
+        "Gender":"Female",
+        "Age":"23",
+        "Address":"Rathmahara, Narangoda",
+        "Phone":"0707859981",
+        "hobby":"Working",
+        "currentPassword":"Malshani1234@",
+        "newPassword":"Malshani12345@",
+        "confirmPassword":"Malshani12345@",
+        "Language":"English"
+    }
+]
