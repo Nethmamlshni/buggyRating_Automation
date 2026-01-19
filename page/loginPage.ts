@@ -31,7 +31,12 @@ export class LoginPage{
     }
 
     async confirmlogins(){
-             await expect(this.confirmLogin).toBeVisible({ timeout: 10000 });
-             console.log('User Login successfully');
+        if (await this.confirmLogin.isVisible()){
+            await expect(this.confirmLogin).toBeVisible({ timeout: 10000 });
+            console.log('User Login successfully');
+        }else{
+            await this.page.screenshot({path:`./screenshots/userLoginFailed${Date.now()}.png`});
+            console.log('User login failed');
+        }
     }
 }

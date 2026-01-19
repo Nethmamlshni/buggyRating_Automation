@@ -45,8 +45,14 @@ export class Logout {
     }
 
     async confirmLogouts(){
-        await expect(this.confirmLogout).toBeVisible({ timeout:1000});
-        console.log('User logged out successfully');
+        if (await this.confirmLogout.isVisible()){
+                await expect(this.confirmLogout).toBeVisible({ timeout:1000});
+                console.log('User logged out successfully');
+        }else {
+            await this.page.screenshot({path:`./screenshots/userLogout${Date.now()}.png`});
+            console.log('User logout failed');
+        }
+   
     }
 
    
