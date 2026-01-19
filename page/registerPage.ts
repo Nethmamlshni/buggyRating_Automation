@@ -54,7 +54,7 @@ export class RegisterPage{
         console.log('User registered successfully');
        }else{
         await expect(this.badNortification).toBeVisible();
-        await this.page.screenshot({path:'./screenshots/userRegistrationFailed.png'});
+        await this.page.screenshot({path:`./screenshots/userRegistrationFailed${Date.now()}.png`});
         console.log('User registration failed');
 
        }
