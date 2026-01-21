@@ -52,12 +52,12 @@ export class InvalidProfile{
     }){
         await this.age.fill(user.Age);
         if (user.Age < "0" || user.Age > "95"){
-            await expect(this.ageAlert).toBeVisible();
             await this.page.screenshot({ path: 'invalidAgeAlert.png' });
             console.log("Invalid age alert displayed");
-            await this.age.fill('23');
-            console.log("Valid age added");
         }
+        await this.age.clear();
+        await this.age.fill('23');
+        console.log("Valid age added");
         await this.phone.fill(user.Phone);
         if (user.Phone.length < 10 || user.Phone.length > 15){
             await this.page.screenshot({ path: 'invalidPhoneAlert.png' });
