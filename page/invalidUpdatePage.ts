@@ -54,6 +54,7 @@ export class InvalidProfile{
         if (user.Age < "0" || user.Age > "95"){
             await this.page.screenshot({ path: 'invalidAgeAlert.png' });
             console.log("Invalid age alert displayed");
+           
         }
         await this.age.clear();
         await this.age.fill('23');
