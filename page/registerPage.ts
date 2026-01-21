@@ -49,15 +49,8 @@ export class RegisterPage{
     }
 
     async confirmUserRegister(){
-       if (await this.notification.isVisible()){
         await expect(this.notification).toBeVisible();
         console.log('User registered successfully');
-       }else{
-        await expect(this.badNortification).toBeVisible();
-        await this.page.screenshot({path:`./screenshots/userRegistrationFailed${Date.now()}.png`});
-        console.log('User registration failed');
 
        }
     }
-
-}

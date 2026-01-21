@@ -1,12 +1,12 @@
 import { test } from '@playwright/test';
 import profileData from '../test-Data/profileData.json';
 import { Profile } from '../page/profilePage';
-import loginData from '../test-Data/loginData.json';
+import profileLoginData from '../test-Data/loginData.json';
 
 test.describe('User profile updated with valid data', () => {
     test('user login', async ({ page }) => {
         const profile = new Profile(page);
-        for (const user of loginData) {
+        for (const user of profileLoginData) {
             await profile.goto();
             await profile.loginUser(user);
             await profile.confirmlogins();
