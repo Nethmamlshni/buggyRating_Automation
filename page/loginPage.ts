@@ -9,7 +9,9 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        this.login = page.locator('input[name="email"]'); // use real selector
+
+        // Update selectors to match your app
+        this.login = page.locator('input[name="login"]'); // safer than getByRole
         this.password = page.locator('input[name="password"]');
         this.loginButton = page.getByRole('button', { name: /login/i }); // case-insensitive
         this.confirmLogin = page.getByRole('link', { name: /profile/i }); // case-insensitive
@@ -20,18 +22,21 @@ export class LoginPage {
         console.log("Navigated to the application URL");
     }
 
-    async loginUser(user: { email: string; password: string }) {
-        await this.login.fill(user.email);
-        await this.password.fill(user.password);
+    async loginUser(user: { Login: string; Password: string }) {
+        await this.login.fill(user.Login);
+        await this.password.fill(user.Password);
+
+        // Wait for navigation after clicking login
         await Promise.all([
             this.page.waitForNavigation({ waitUntil: 'networkidle' }),
             this.loginButton.click(),
         ]);
+
         console.log("Login data submitted successfully");
     }
 
     async confirmLoginVisible() {
-        await expect(this.confirmLogin).toBeVisible({ timeout: 10000 });
+        await expect(this.confirmLogin).toBeVisible({ timeout: 15000 }); // 15s timeout for slow pages
         console.log("User login verified successfully");
     }
 }
